@@ -1,7 +1,8 @@
+import styles from "./home.module.css";
+
+import { BiSearch } from "react-icons/bi";
+import { Link } from "react-router-dom";
+
 export function Home() {
-   return (
-      <div>
-         <h1>HOME</h1>
-      </div>
-   );
+   return <h1>home</h1>;
 }
