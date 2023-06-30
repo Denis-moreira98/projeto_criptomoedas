@@ -1,10 +1,10 @@
 import styles from "./home.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, FormEvent } from "react";
 
 import { BiSearch } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-//https://sujeitoprogramador.com/api-cripto/?key=67f9141787211428
+//https://sujeitoprogramador.com/api-cripto/?key=60d3226e55eae848
 
 interface CoinProps {
    name: string;
@@ -23,11 +23,13 @@ interface DataProps {
 
 export function Home() {
    const [coins, setCoins] = useState<CoinProps[]>([]);
+   const [inputValue, setInputValue] = useState("");
+   const navigate = useNavigate();
 
    useEffect(() => {
       function getData() {
          fetch(
-            "https://sujeitoprogramador.com/api-cripto/?key=67f9141787211428"
+            "https://sujeitoprogramador.com/api-cripto/?key=60d3226e55eae848"
          )
             .then((response) => response.json())
             .then((data: DataProps) => {
@@ -48,17 +50,28 @@ export function Home() {
 
                   return formated;
                });
-               console.log(formartResult);
+               //console.log(formartResult);
                setCoins(formartResult);
             });
       }
       getData();
    }, []);
 
+   function handleSearch(event: FormEvent) {
+      event.preventDefault();
+      if (inputValue === "") return;
+
+      navigate(`/deatil/${inputValue}`);
+   }
+
    return (
       <main className={styles.container}>
-         <form className={styles.form}>
-            <input placeholder="Digite o simbolo da moeda: BTC.." />
+         <form className={styles.form} onSubmit={handleSearch}>
+            <input
+               placeholder="Digite o simbolo da moeda: BTC.."
+               value={inputValue}
+               onChange={(e) => setInputValue(e.target.value)}
+            />
             <button type="submit">
                <BiSearch size={30} color="#FFF" />
             </button>
@@ -91,7 +104,7 @@ export function Home() {
                      </td>
                      <td
                         className={
-                           Number.parseFloat(coin.delta_24h) > 0
+                           Number.parseFloat(coin?.delta_24h) > 0
                               ? styles.tdProfit
                               : styles.tdLoss
                         }
