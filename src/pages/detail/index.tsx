@@ -16,6 +16,7 @@ interface CoinProp {
    formatedLowprice: string;
    formatedHighprice: string;
    error?: string;
+   numberDelta?: number;
 }
 
 export function Detail() {
@@ -46,6 +47,7 @@ export function Detail() {
                   formated_market: price.format(Number(data.market_cap)),
                   formatedLowprice: price.format(Number(data.low_24h)),
                   formatedHighprice: price.format(Number(data.high_24h)),
+                  numberDelta: parseFloat(data.delta_24h.replace(",", ".")),
                };
 
                setDetail(resultData);
@@ -83,7 +85,7 @@ export function Detail() {
                <strong>Detal 24h: </strong>
                <span
                   className={
-                     Number.parseFloat(detail?.delta_24h) >= 0
+                     detail?.numberDelta && detail?.numberDelta >= 0
                         ? styles.profit
                         : styles.loss
                   }
