@@ -63,7 +63,7 @@ export function Home() {
       event.preventDefault();
       if (inputValue === "") return;
 
-      navigate(`/deatil/${inputValue}`);
+      navigate(`/detail/${inputValue}`);
    }
 
    return (
