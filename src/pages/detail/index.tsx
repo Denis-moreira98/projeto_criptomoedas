@@ -82,7 +82,7 @@ export function Detail() {
                <strong>Menor preço em 24h:</strong> {detail?.formatedLowprice}
             </p>
             <p>
-               <strong>Detal 24h: </strong>
+               <strong>Delta 24h: </strong>
                <span
                   className={
                      detail?.numberDelta && detail?.numberDelta >= 0
