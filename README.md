@@ -3,9 +3,8 @@
  Projeto desenvolvido para aprimorar os conhecimentos no React.
  Ele trás os dados reais do mercado da cripto moeda, foi utilizado a Api do Coinlib para consumir os dados.
 
-## Funcionalidades:
-- Uma tabela com 15 tipos de cripto moedas. Essa tabela conta com detalhes de cada moeda (Nome e simbolo, valor de mercado, preço e volume).
-- Barra de pesquisa: Você pode digitar o simbolo da moeda que abrirá uma pagina com mais informações (Preço, Maior preço em 24h, Menor preço em 24h, Delta 24h, Valor total de mercado).
+## Funcionalidade:
+- Barra de pesquisa, você pode pesquisar a SIGLA da moeda (exemplo: BTC), e essa pesquisa trará mais informações, ou se preferir basta apenas clicar em alguma moeda na tabela que será redirecionado para uma página com os detalhes.
 
 
 ### [Deploy](https://projeto-criptomoedas.vercel.app/)
