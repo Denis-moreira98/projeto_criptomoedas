@@ -8,6 +8,21 @@
 
 
 ### [Deploy](https://projeto-criptomoedas.vercel.app/)
+
+## Para Rodar localmente na sua máquina:
+
+Instale as dependências
+
+```bash
+  npm install
+```
+
+Inicie o servidor da Aplicação
+
+```bash
+  npm run start
+```
+
   
 
 
