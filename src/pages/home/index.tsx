@@ -54,9 +54,12 @@ export function Home() {
 
                   return formated;
                });
-               //console.log(formartResult);
+               console.log(formartResult);
                setCoins(formartResult);
                setLoading(false);
+            })
+            .catch((err) => {
+               console.log(`message error: ${err}`);
             });
       }
       getData();

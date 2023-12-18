@@ -16,3 +16,16 @@ body {
 button {
    cursor: pointer;
 }
+
+::-webkit-scrollbar {
+   width: 0.45rem;
+}
+
+::-webkit-scrollbar-track {
+   background: #18171c;
+}
+
+::-webkit-scrollbar-thumb {
+   background: #30beff;
+   border-radius: 999px;
+}
