@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./detail.module.css";
 import { useParams, useNavigate } from "react-router-dom";
+import { Loading } from "../../components/loading";
 
 interface CoinProp {
    symbol: string;
@@ -61,7 +62,8 @@ export function Detail() {
    if (loading) {
       return (
          <div className={styles.container}>
-            <h4 className={styles.center}>Carregando informações...</h4>
+            <h2 className={styles.center}>Carregando informações...</h2>
+            <Loading />
          </div>
       );
    }

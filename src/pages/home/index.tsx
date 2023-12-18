@@ -3,6 +3,7 @@ import { useEffect, useState, FormEvent } from "react";
 
 import { BiSearch } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
+import { Loading } from "../../components/loading";
 
 //https://sujeitoprogramador.com/api-cripto/?key=60d3226e55eae848
 
@@ -25,6 +26,7 @@ interface DataProps {
 export function Home() {
    const [coins, setCoins] = useState<CoinProps[]>([]);
    const [inputValue, setInputValue] = useState("");
+   const [loading, setLoading] = useState(true);
    const navigate = useNavigate();
 
    useEffect(() => {
@@ -54,10 +56,20 @@ export function Home() {
                });
                //console.log(formartResult);
                setCoins(formartResult);
+               setLoading(false);
             });
       }
       getData();
    }, []);
+
+   if (loading) {
+      return (
+         <div className={styles.container_loading}>
+            <h2 className={styles.center}>Carregando informações...</h2>
+            <Loading />
+         </div>
+      );
+   }
 
    function handleSearch(event: FormEvent) {
       event.preventDefault();
