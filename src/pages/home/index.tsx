@@ -30,14 +30,14 @@ export function Home() {
    const navigate = useNavigate();
 
    useEffect(() => {
-      function getData() {
-         fetch(
+      async function getData() {
+         await fetch(
             "https://sujeitoprogramador.com/api-cripto/?key=60d3226e55eae848"
          )
             .then((response) => response.json())
             .then((data: DataProps) => {
                // a resquisição deu tudo certo
-               const coinsData = data.coins.slice(0, 15);
+               const coinsData = data.coins.slice(0, 20);
 
                const price = Intl.NumberFormat("pt-BR", {
                   style: "currency",
@@ -54,7 +54,7 @@ export function Home() {
 
                   return formated;
                });
-               console.log(formartResult);
+               //console.log(formartResult);
                setCoins(formartResult);
                setLoading(false);
             })
@@ -68,7 +68,7 @@ export function Home() {
    if (loading) {
       return (
          <div className={styles.container_loading}>
-            <h2 className={styles.center}>Carregando informações...</h2>
+            <h3 className={styles.center}>Carregando informações...</h3>
             <Loading />
          </div>
       );

@@ -28,16 +28,12 @@ export function Detail() {
    const navigate = useNavigate();
 
    useEffect(() => {
-      function getData() {
-         fetch(
+      async function getData() {
+         await fetch(
             `https://sujeitoprogramador.com/api-cripto/coin/?key=60d3226e55eae848&symbol=${cripto}`
          )
             .then((response) => response.json())
             .then((data: CoinProp) => {
-               if (data.error) {
-                  navigate("/");
-               }
-
                const price = Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
@@ -54,6 +50,10 @@ export function Detail() {
                setDetail(resultData);
                setLoading(false);
                //console.log(resultData);
+            })
+            .catch((err) => {
+               navigate("/");
+               console.log(`error: ${err}`);
             });
       }
       getData();
@@ -62,7 +62,7 @@ export function Detail() {
    if (loading) {
       return (
          <div className={styles.container}>
-            <h2 className={styles.center}>Carregando informações...</h2>
+            <h3 className={styles.center}>Carregando informações...</h3>
             <Loading />
          </div>
       );
